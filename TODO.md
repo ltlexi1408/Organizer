@@ -1,6 +1,6 @@
 Todo list
 
-Events
+Events X
 -projects
 -school
 -general
