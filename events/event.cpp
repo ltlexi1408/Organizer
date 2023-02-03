@@ -9,7 +9,7 @@ event::~event(){
 
 }
 
-std::string event::getEventType(){
+event::EventType event::getEventType(){
     return eventType;
 }
 
@@ -25,7 +25,7 @@ bool event::getComplete(){
     return complete;
 }
 
-void event::setEvent(std::string eventType){
+void event::setEvent(EventType event){
     this->eventType = eventType;
 }
 
@@ -42,7 +42,7 @@ void event::setComplete(bool status){
 }
 
 std::string event::getEvent(){
-    return "Event type: " + eventType + "\n" 
+    return "Event type: " + std::to_string(eventType) + "\n" 
         + "Start date: " + std::to_string(startDate.day) + "/" +  std::to_string(startDate.month) + "/" + std::to_string(startDate.year)+ "\n"
         + "End date: " + std::to_string(endDate.day) + "/" +  std::to_string(endDate.month) + "/" + std::to_string(endDate.year) + "\n"
         + "Complete: " + std::to_string(complete); 

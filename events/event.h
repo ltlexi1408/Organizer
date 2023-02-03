@@ -5,15 +5,21 @@
 
 class event{
     public:
+        enum EventType {
+            school,
+            work,
+            friends
+        };
+
         event();
         ~event();
 
-        std::string getEventType();
+        EventType getEventType();
         date getStartDate();
         date getEndDate();
         bool getComplete();
 
-        void setEvent(std::string eventType);
+        void setEvent(EventType event);
         void setStartDate(date startDate);
         void setEndDate(date endDate);
         void setComplete(bool status);
@@ -21,10 +27,11 @@ class event{
         std::string getEvent();
 
     private:
-        std::string eventType;
+        EventType eventType;
         date startDate;
         date endDate;
         bool complete;
+
 };
 
 #endif //EVENTS
