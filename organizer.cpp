@@ -45,6 +45,9 @@ int main(){
 
             userList.push_back(newUser);
 
+            addUser(connection, newUser);
+
+            std::cout << getUsers(statment)[0].getUsername() << " : " << getUsers(statment)[0].getPassword() << std::endl;
         }else{
             bool login = false;
 
@@ -86,8 +89,6 @@ std::vector<users> getUsers(std::shared_ptr<sql::Statement> &statment){
     try{
         std::vector<users> userList;
         
-        
-
         std::unique_ptr<sql::ResultSet> results(statment->executeQuery("SELECT * FROM users"));
 
         while(results->next()){
@@ -108,12 +109,16 @@ std::vector<users> getUsers(std::shared_ptr<sql::Statement> &statment){
 
 void addUser(std::unique_ptr<sql::Connection> &connection, users user){
     try{
-        std::unique_ptr<sql::PreparedStatement> statment(connection->prepareStatement("INSERT INTO USERS (user_name, user_password) VALUES (?, ?)"));
+        std::cout << user.getUsername() << " : " << user.getPassword() << std::endl;
 
-        statment->setString(1, user.getUsername());
-        statment->setString(2, user.getPassword());
+        std::unique_ptr<sql::PreparedStatement> statment(connection->prepareStatement("INSERT INTO users (user_name, user_password) VALUES (?, ?)"));
+
+        statment->setString(1, sql::SQLString(user.getUsername()));
+        statment->setString(2, sql::SQLString(user.getPassword()));
 
         statment->executeUpdate();
+
+        connection->commit();
     }catch(sql::SQLException e){
         
     }
