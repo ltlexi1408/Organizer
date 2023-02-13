@@ -5,8 +5,10 @@ all: organizer
 clean:
 	rm -rf organizer *.o
 
-blink5: organizer.o event.o
-	g++ -Wall -Werror -g -O -o $@ $^
+organizer: organizer.o event.o users.o
+	g++ -Wall -Werror -g -O -I/user/include/mysql -lmariadbcpp -o $@ $^
 
 %.o: %cpp
-	++ -Wall -Werror -g -O -c $^
+	++ -Wall -Werror -g -O -I/user/include/mysql -lmariadbcpp -c $^
+
+events: 

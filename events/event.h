@@ -1,7 +1,7 @@
 #ifndef EVENTS
 #define EVENTS
 
-#include "base.h"
+#include "../base.h"
 
 class event{
     public:
@@ -18,10 +18,12 @@ class event{
         date getStartDate();
         date getEndDate();
         bool getComplete();
+        std::string getDescription();
 
         void setEvent(EventType event);
         void setStartDate(date startDate);
         void setEndDate(date endDate);
+        void setDescription(std::string description);
         void setComplete(bool status);
 
         std::string getEvent();
@@ -30,6 +32,7 @@ class event{
         EventType eventType;
         date startDate;
         date endDate;
+        std::string description;
         bool complete;
 
 };

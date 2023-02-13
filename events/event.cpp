@@ -21,6 +21,10 @@ date event::getEndDate(){
     return endDate;
 }
 
+std::string event::getDescription(){
+    return description;
+}
+
 bool event::getComplete(){
     return complete;
 }
@@ -35,6 +39,10 @@ void event::setStartDate(date startDate){
 
 void event::setEndDate(date endDate){
     this->endDate = endDate;
+}
+
+void event::setDescription(std::string description){
+    this->description = description;
 }
 
 void event::setComplete(bool status){
